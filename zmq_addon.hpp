@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 VOCA AS / Harald Nøkland
+    Copyright (c) 2016 VOCA AS / Harald NÃ¸kland
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to
@@ -35,7 +35,7 @@ namespace zmq {
 /*
     This class handles multipart messaging. It is the C++ equivalent of zmsg.h,
     which is part of CZMQ (the high-level C binding). Furthermore, it is a major
-    improvement compared to zmsg.hpp, which is part of the examples in the ØMQ
+    improvement compared to zmsg.hpp, which is part of the examples in the Ã˜MQ
     Guide. Unnecessary copying is avoided by using move semantics to efficiently
     add/remove parts.
 */
@@ -222,7 +222,7 @@ public:
     {
         static_assert(!std::is_same<T, std::string>::value, "Use popstr() instead of poptyp<std::string>()");
         if (sizeof(T) != m_parts.front().size())
-            throw std::exception("Invalid type, size does not match the message size");
+            throw std::runtime_error("Invalid type, size does not match the message size");
         T type = *m_parts.front().data<T>();
         m_parts.pop_front();
         return type;
